@@ -93,7 +93,7 @@ class TestCalculationEndpoints:
             "operand1": 10,
             "operand2": 0
         })
-        assert response.status_code == status.HTTP_400_BAD_REQUEST
+        assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
 
     def test_list_calculations(self, authenticated_client):
         """Test listing calculations"""
