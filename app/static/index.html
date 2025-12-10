@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Calculator</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Page -->
+        <div id="login-page" class="page active">
+            <div class="container">
+                <h1>Advanced Calculator</h1>
+                <div class="form-container">
+                    <h2>Login</h2>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-username">Username</label>
+                            <input type="text" id="login-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <p class="form-switch">Don't have an account? <a href="#" id="show-register">Register</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Page -->
+        <div id="register-page" class="page">
+            <div class="container">
+                <h1>Advanced Calculator</h1>
+                <div class="form-container">
+                    <h2>Register</h2>
+                    <form id="register-form">
+                        <div class="form-group">
+                            <label for="register-username">Username</label>
+                            <input type="text" id="register-username" required minlength="3">
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">Email</label>
+                            <input type="email" id="register-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Password</label>
+                            <input type="password" id="register-password" required minlength="6">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                        <p class="form-switch">Already have an account? <a href="#" id="show-login">Login</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calculator Page -->
+        <div id="calculator-page" class="page">
+            <nav class="navbar">
+                <div class="nav-brand">Advanced Calculator</div>
+                <div class="nav-menu">
+                    <a href="#" class="nav-link active" id="nav-calculator">Calculator</a>
+                    <a href="#" class="nav-link" id="nav-history">History</a>
+                    <a href="#" class="nav-link" id="nav-profile">Profile</a>
+                    <a href="#" class="nav-link" id="logout-btn">Logout</a>
+                </div>
+            </nav>
+            
+            <div class="container">
+                <h2>Calculator</h2>
+                <div class="calculator">
+                    <form id="calculator-form">
+                        <div class="form-group">
+                            <label for="operand1">First Number</label>
+                            <input type="number" id="operand1" step="any" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="operation">Operation</label>
+                            <select id="operation" required>
+                                <option value="add">Addition (+)</option>
+                                <option value="subtract">Subtraction (-)</option>
+                                <option value="multiply">Multiplication (×)</option>
+                                <option value="divide">Division (÷)</option>
+                                <option value="power">Power (^)</option>
+                                <option value="modulo">Modulo (%)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="operand2">Second Number</label>
+                            <input type="number" id="operand2" step="any" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Calculate</button>
+                    </form>
+                    <div id="result" class="result"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- History Page -->
+        <div id="history-page" class="page">
+            <nav class="navbar">
+                <div class="nav-brand">Advanced Calculator</div>
+                <div class="nav-menu">
+                    <a href="#" class="nav-link" id="nav-calculator-2">Calculator</a>
+                    <a href="#" class="nav-link active" id="nav-history-2">History</a>
+                    <a href="#" class="nav-link" id="nav-profile-2">Profile</a>
+                    <a href="#" class="nav-link" id="logout-btn-2">Logout</a>
+                </div>
+            </nav>
+            
+            <div class="container">
+                <h2>Calculation History & Statistics</h2>
+                
+                <!-- Statistics -->
+                <div class="statistics">
+                    <h3>Your Statistics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-total">0</div>
+                            <div class="stat-label">Total Calculations</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-avg">0</div>
+                            <div class="stat-label">Average Result</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-most">-</div>
+                            <div class="stat-label">Most Used Operation</div>
+                        </div>
+                    </div>
+                    <div class="operations-breakdown" id="operations-breakdown"></div>
+                </div>
+
+                <!-- History Table -->
+                <div class="history-section">
+                    <h3>Recent Calculations</h3>
+                    <table class="history-table" id="history-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Operation</th>
+                                <th>Expression</th>
+                                <th>Result</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-tbody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Page -->
+        <div id="profile-page" class="page">
+            <nav class="navbar">
+                <div class="nav-brand">Advanced Calculator</div>
+                <div class="nav-menu">
+                    <a href="#" class="nav-link" id="nav-calculator-3">Calculator</a>
+                    <a href="#" class="nav-link" id="nav-history-3">History</a>
+                    <a href="#" class="nav-link active" id="nav-profile-3">Profile</a>
+                    <a href="#" class="nav-link" id="logout-btn-3">Logout</a>
+                </div>
+            </nav>
+            
+            <div class="container">
+                <h2>User Profile</h2>
+                
+                <!-- Profile Information -->
+                <div class="profile-section">
+                    <h3>Profile Information</h3>
+                    <form id="profile-form">
+                        <div class="form-group">
+                            <label for="profile-username">Username</label>
+                            <input type="text" id="profile-username" required minlength="3">
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-email">Email</label>
+                            <input type="email" id="profile-email" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                    </form>
+                </div>
+
+                <!-- Change Password -->
+                <div class="profile-section">
+                    <h3>Change Password</h3>
+                    <form id="password-form">
+                        <div class="form-group">
+                            <label for="current-password">Current Password</label>
+                            <input type="password" id="current-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">New Password</label>
+                            <input type="password" id="new-password" required minlength="6">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Change Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="message-toast" class="toast"></div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
